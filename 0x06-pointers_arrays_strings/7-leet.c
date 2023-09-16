@@ -1,32 +1,29 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
-  * cap_string - ...
-  * @s: ...
-  *
-  * Return: char value
-  */
-char *cap_string(char *s)
+ * leet - Write a function that encodes a string into 1337
+ *
+ * @changed: This is the input string
+ *
+ * Return: String converted to 1337
+ */
+
+char *leet(char *changed)
 {
-	int a = 0, i;
-	int cspc = 13;
-	char spc[] = {32, '\t', '\n', 44, ';', 46, '!', '?', '"', '(', ')', '{', '}'};
+	int index, j;
+	char minus[] = {'a', 'e', 'o', 't', 'l', '\0'};
+	char mayus[] = {'A', 'E', 'O', 'T', 'L', '\0'};
+	char numbers[] = {'4', '3', '0', '7', '1', '\0'};
 
-	while (s[a])
+	for (index = 0; changed[index] != '\0'; ++index)
 	{
-		i = 0;
-
-		while (i < cspc)
+		for (j = 0; j < 5; j++)
 		{
-			if ((a == 0 || s[a - 1] == spc[i]) && (s[a] >= 97 && s[a] <= 122))
-				s[a] -= 32;
-
-			i++;
+			if (changed[index] == minus[j] || changed[index] == mayus[j])
+			{
+				changed[index] = numbers[j];
+			}
 		}
-
-		a++;
 	}
-
-	return (s);
+	return (changed);
 }
